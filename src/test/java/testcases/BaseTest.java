@@ -37,20 +37,16 @@ public abstract class BaseTest {
 		options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
 		options.addArguments("-–no-sandbox");
 		options.addArguments("window-size=1200,1100");
-		
-		WebDriverManager.chromedriver().setup();
 
-		// driver.set(new ChromeDriver(options));//chrome on local machine
+		WebDriverManager.chromedriver().setup();
+		// driver.set(new ChromeDriver(options));
 		try {
-			driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options)); // chrome on remote
-																								// machine
+			driver.set(new RemoteWebDriver(new URL(" http://localhost:4444/wd/hub"), options));
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		driver.get().manage().window().maximize();
-		// driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		driver.get().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		// launch our application
 		// driver.get().get("https://testautomasi.com");
